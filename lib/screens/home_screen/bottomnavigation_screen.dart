@@ -1,4 +1,5 @@
 import 'package:bit_graph/screens/home_screen/dialytask_screen.dart';
+import 'package:bit_graph/screens/settings_screen/settings_screens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     const DialyTask(),
     const DialyTask(),
     const DialyTask(),
-    const DialyTask(),
+    const Settings(),
   ];
 
   void onItemTapped(int num) {
@@ -29,38 +30,45 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xff91BAD6),
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: navigation[index],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: index,
-        selectedItemColor: const Color(0xff91BAD6),
-        unselectedItemColor: const Color(0xff9B9B9B),
-        onTap: onItemTapped,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              CupertinoIcons.home,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.chat,
-            ),
-            label: 'Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.messenger,
-            ),
-            label: 'Message',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-            ),
-            label: 'Settings',
-          ),
-        ],
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        height: 65,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.home_filled,
+                  // color: Color(0xff91BAD6),
+                )),
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.chat,
+                  // color: Color(0xff91BAD6),
+                )),
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.forward_to_inbox,
+                  // color: Color(0xff91BAD6),
+                )),
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.settings,
+                  // color: Color(0xff91BAD6),
+                ))
+          ],
+        ),
       ),
     );
   }

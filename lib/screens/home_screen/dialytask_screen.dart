@@ -53,21 +53,21 @@ class _DialyTaskState extends State<DialyTask> {
               style: TextStyle(fontSize: Dimensions.heightCalc(context, 22)),
             ),
           ),
-          // GridView.builder(
-          //   shrinkWrap: true,
-          //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          //     crossAxisCount: 2,
-          //     mainAxisSpacing: 8.0,
-          //     crossAxisSpacing: 8.0,
-          //   ),
-          //   itemBuilder: (BuildContext context, int index) {
-          //     return Container(
-          //       height: 100,
-          //       width: 100,
-          //       decoration: const BoxDecoration(color: Colors.black87),
-          //     );
-          //   },
-          // )
+          GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 8.0,
+              crossAxisSpacing: 8.0,
+            ),
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                height: 100,
+                width: 100,
+                decoration: const BoxDecoration(color: Colors.red),
+              );
+            },
+          )
         ],
       ),
     );
