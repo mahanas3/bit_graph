@@ -145,15 +145,13 @@ class _OngoingState extends State<Ongoing> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 100, left: 115),
+                    padding: const EdgeInsets.only(left: 110, top: 100),
                     child: Container(
-                      height: Dimensions.heightCalc(context, 40),
-                      width: Dimensions.widthCalc(context, 40),
-                      child: FloatingActionButton(
-                        onPressed: () {},
-                        backgroundColor: Colors.orangeAccent,
-                        child: const Icon(Icons.add),
-                      ),
+                      height: Dimensions.heightCalc(context, 45),
+                      width: Dimensions.widthCalc(context, 45),
+                      decoration: const BoxDecoration(
+                          color: Colors.orangeAccent, shape: BoxShape.circle),
+                      child: const Icon(Icons.add),
                     ),
                   ),
                   Padding(

@@ -147,18 +147,21 @@ class _AllScreenState extends State<AllScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 100, left: 115),
+                    padding: const EdgeInsets.only(left: 110, top: 100),
                     child: Container(
-                      height: Dimensions.heightCalc(context, 40),
-                      width: Dimensions.widthCalc(context, 40),
+                      height: Dimensions.heightCalc(context, 45),
+                      width: Dimensions.widthCalc(context, 45),
+                      decoration: const BoxDecoration(
+                          color: Colors.orangeAccent, shape: BoxShape.circle),
                       child: const Icon(Icons.add),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 40, left: 220),
-                    child: InkWell(onTap:(){
-                      context.read<ListProvider>().dashBoard(context);
-                    },
+                    child: InkWell(
+                      onTap: () {
+                        context.read<ListProvider>().dashBoard(context);
+                      },
                       child: CircularPercentIndicator(
                         radius: 50,
                         lineWidth: 10,
