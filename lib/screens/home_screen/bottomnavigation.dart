@@ -1,4 +1,5 @@
 import 'package:bit_graph/screens/home_screen/dialytask_screen.dart';
+import 'package:bit_graph/screens/list_screen/project_screen.dart';
 import 'package:bit_graph/screens/settings_screen/settings_screens.dart';
 import 'package:bit_graph/utilities/dimensions.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   List navigation = [
     const DialyTask(),
-    const DialyTask(),
+    const Project(),
     const DialyTask(),
     const Settings(),
   ];

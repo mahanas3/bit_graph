@@ -1,5 +1,6 @@
 import 'package:bit_graph/utilities/dimensions.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class DialyTask extends StatefulWidget {
   const DialyTask({super.key});
@@ -11,6 +12,7 @@ class DialyTask extends StatefulWidget {
 class _DialyTaskState extends State<DialyTask> {
   @override
   Widget build(BuildContext context) {
+
     List images = [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwI41pQ1FiL_L7BNzMLQJYaTQVIWRwP--2w&usqp=CAU',
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxLt8o2yToAm9Uh4KGGlEGFjgoGShKeMjFQw&usqp=CAU',
@@ -47,6 +49,14 @@ class _DialyTaskState extends State<DialyTask> {
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe-nDXn1Xg8qOP0odcLuOkPZ7kpLzeGI-3FQ&usqp=CAU'
     ];
 
+    List<Color> progressColors = [
+      Colors.deepPurple,
+      Colors.green,
+      Colors.orangeAccent,
+    ];
+
+    bool value = false;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -68,7 +78,7 @@ class _DialyTaskState extends State<DialyTask> {
                   ),
                   Icon(
                     Icons.search,
-                    color: Colors.black87,
+                    color: Colors.grey,
                     size: Dimensions.heightCalc(context, 35),
                   )
                 ],
@@ -180,6 +190,15 @@ class _DialyTaskState extends State<DialyTask> {
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white),
                   ),
+                  // Checkbox(
+                  //   shape: CircleBorder(side: BorderSide()), value: t,
+                  //   // value: this.value,
+                  //   // onChanged: (bool? value) {
+                  //   //   setState(() {
+                  //   //     this.value = value;
+                  //   //   });
+                  //   // },
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20, left: 50),
                     child: Text(
@@ -230,7 +249,18 @@ class _DialyTaskState extends State<DialyTask> {
                     child: Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.grey),
                   ),
-
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50, left: 40),
+                    child: LinearPercentIndicator(
+                      lineHeight: Dimensions.heightCalc(context, 12),
+                      percent: 0.5,
+                      width: Dimensions.widthCalc(context, 200),
+                      barRadius: const Radius.circular(10),
+                      progressColor:
+                          progressColors[index % progressColors.length],
+                      backgroundColor: Colors.white,
+                    ),
+                  )
                 ]);
               },
               separatorBuilder: (BuildContext context, int index) {
