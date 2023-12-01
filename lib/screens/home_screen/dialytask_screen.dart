@@ -56,8 +56,6 @@ class _DialyTaskState extends State<DialyTask> {
       Colors.orangeAccent,
     ];
 
-    bool value = false;
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -66,14 +64,21 @@ class _DialyTaskState extends State<DialyTask> {
               padding: const EdgeInsets.only(top: 60, left: 20),
               child: Row(
                 children: [
-                  Container(
-                    height: Dimensions.heightCalc(context, 55),
-                    width: Dimensions.widthCalc(context, 55),
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIWNTiq9IDokwKAKD68rWcfvb_790X2MOxIA&usqp=CAU'))),
-                  ),
+                  Consumer<HomeProvider>(
+                      builder: (BuildContext context, value, Widget? child) {
+                    return value.loading
+                        ? const CircularProgressIndicator()
+                        : value.profile == null
+                            ? const Text('Loading')
+                            : Container(
+                                height: Dimensions.heightCalc(context, 55),
+                                width: Dimensions.widthCalc(context, 55),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            value.profile.toString()))),
+                              );
+                  }),
                   SizedBox(
                     width: Dimensions.widthCalc(context, 230),
                   ),
@@ -194,15 +199,6 @@ class _DialyTaskState extends State<DialyTask> {
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white),
                   ),
-                  // Checkbox(
-                  //   shape: CircleBorder(side: BorderSide()), value: t,
-                  //   // value: this.value,
-                  //   // onChanged: (bool? value) {
-                  //   //   setState(() {
-                  //   //     this.value = value;
-                  //   //   });
-                  //   // },
-                  // ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20, left: 50),
                     child: InkWell(
