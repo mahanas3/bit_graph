@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 
 class HomeProvider extends ChangeNotifier {
-  int _currentIndex = 0;
+  List<bool> checkboxStates = List.generate(3, (index) => false);
 
-  final List<Map<String, dynamic>> tasks = [];
-
-  set currentIndex(int index) {
-    _currentIndex = index;
+  void toggleCheckbox(int index) {
+    checkboxStates[index] = !checkboxStates[index];
     notifyListeners();
   }
 
-  void addTasks(BuildContext context, String name) {
-    tasks.add({'name': name, 'checkbox': Checkbox});
-    // Navigator.push(
-    //     context, MaterialPageRoute(builder: (context) => const Items()));
+  void dashBoard(BuildContext context) {
+    Navigator.pushNamed(context, '/dashBoard');
     notifyListeners();
   }
 }

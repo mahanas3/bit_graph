@@ -1,6 +1,8 @@
+import 'package:bit_graph/provider/home_provider.dart';
 import 'package:bit_graph/utilities/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 class DialyTask extends StatefulWidget {
   const DialyTask({super.key});
@@ -12,10 +14,9 @@ class DialyTask extends StatefulWidget {
 class _DialyTaskState extends State<DialyTask> {
   @override
   Widget build(BuildContext context) {
-
     List images = [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwI41pQ1FiL_L7BNzMLQJYaTQVIWRwP--2w&usqp=CAU',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxLt8o2yToAm9Uh4KGGlEGFjgoGShKeMjFQw&usqp=CAU',
+      'https://img.freepik.com/free-vector/wavy-minimal-lights-background_23-2148461189.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699574400&semt=ais',
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJv73UwRMWEsZiMBDcKQsvCILlkdVpeZ8tq2Qot9-8fVs-u1FBDIO39UkTMaERF5E1764&usqp=CAU',
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA9xUvtGnKcZ9daeYymg8YVLAiWqJCaNfDzQ&usqp=CAU'
     ];
@@ -122,29 +123,32 @@ class _DialyTaskState extends State<DialyTask> {
                               image: NetworkImage(images[index]),
                               fit: BoxFit.fill)),
                     ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 50, left: 30),
-                          child: Icon(
-                            iconss[index],
-                            color: Colors.white,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.center,
+                            child: Icon(
+                              iconss[index],
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: Dimensions.heightCalc(context, 15),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 35),
-                          child: Text(
-                            text[index],
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: Dimensions.heightCalc(context, 20),
-                                fontFamily: 'Metropolis'),
+                          SizedBox(
+                            height: Dimensions.heightCalc(context, 15),
                           ),
-                        )
-                      ],
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              text[index],
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: Dimensions.heightCalc(context, 20),
+                                  fontFamily: 'Metropolis'),
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ]);
                 },
@@ -201,11 +205,16 @@ class _DialyTaskState extends State<DialyTask> {
                   // ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20, left: 50),
-                    child: Text(
-                      tasks[index],
-                      style: TextStyle(
-                          fontSize: Dimensions.heightCalc(context, 18),
-                          fontFamily: 'Metropolis'),
+                    child: InkWell(
+                      onTap: () {
+                        context.read<HomeProvider>().dashBoard(context);
+                      },
+                      child: Text(
+                        tasks[index],
+                        style: TextStyle(
+                            fontSize: Dimensions.heightCalc(context, 18),
+                            fontFamily: 'Metropolis'),
+                      ),
                     ),
                   ),
                   Padding(
